@@ -1,5 +1,5 @@
 
-USE [customer_support_ticketing_system_db];
+USE [CustomerSupportTicketingSystemdb];
 GO
 
 
@@ -19,7 +19,6 @@ CREATE TABLE dbo.customers (
     [password] VARCHAR(MAX) NOT NULL  
 );
 GO
-
 
 INSERT INTO dbo.customers (first_name, last_name, email, phone_no, [password])
 VALUES
@@ -87,3 +86,5 @@ GO
 
 SELECT * FROM dbo.comments;
 GO
+SELECT customer_ID, first_name, email, password FROM customers WHERE email='mengoalex20@gmail.com';
+

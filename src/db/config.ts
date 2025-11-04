@@ -5,6 +5,7 @@ import sql from 'mssql'
 
 dotenv.config()
 
+
 const {
    SQL_SERVER,
    SQL_USER,
@@ -13,14 +14,14 @@ const {
    PORT
 } = process.env
 
-//Ensure all required environment variables are defined
+
 assert(PORT, "PORT is required");
 assert(SQL_SERVER, "SQL_SERVER is required");
 assert(SQL_USER, "SQL_USER is required");
 assert(SQL_PWD, "SQL_PWD is required");
 assert(SQL_DB, "SQL_DB is required");
 
-//Configuration object for the database connection
+
 export const config = {
     port: PORT,
     sqlConfig: {
@@ -28,14 +29,14 @@ export const config = {
         password: SQL_PWD,
         database: SQL_DB,
         server: SQL_SERVER,
-        // pool is used to manage multiple connections to the database
+        
         pool: {
             max: 10,
             min: 0,
             idleTimeoutMillis: 30000
         },
         options: {
-            encrypt: true,
+            encrypt: false,
             trustServerCertificate: true
         }
     }
