@@ -45,10 +45,10 @@ export const loginCustomer = async (email: string, password:string) => {
     //find a customer
     const customer = await customerRepositories.getCustomerByEmail(email)
     if(!customer){
-        throw new Error('Invalid credentials')
+        throw new Error('User not found')
     }
 
-    //compare the passwords
+    //compare the passwords 
     const isMatch = await bcrypt.compare(password, customer.password)
     if(!isMatch){
         throw new Error('Invalid credentials')

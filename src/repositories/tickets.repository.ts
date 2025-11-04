@@ -13,12 +13,11 @@ export const createTicket = async(ticket: NewTicket) => {
     const pool = await getPool();
     await pool
     .request()
-    .input ('ticket_no', ticket.ticket_no)
     .input ('event_name', ticket.event_name)
     .input ('event_location', ticket.event_location)
     .input ('price', ticket.price)
     .input ('event_date', ticket.event_date)
-    .query ('INSERT INTO tickets (ticket_ID, event_name, event_location, price, event_date) VALUES (@ticket_ID, @event_name, @event_location, @price, @event_date)');
+    .query ('INSERT INTO tickets (event_name, event_location, price, event_date) VALUES (@event_name, @event_location, @price, @event_date)');
     return { message: 'Ticket created successfully' }
 }
 
@@ -49,7 +48,8 @@ export const updateTicket = async(id:number, ticket: UpdateTicket) => {
     .input('event_name', ticket.event_name)
     .input ('event_location', ticket.event_location)
     .input ('price', ticket.price)
-    .query ('UPDATE tickets SET id = @id, event_name =@event_name, event_location = @event_location, price = @price, event_date =@event_date WHERE tickets_no = @id')
+    .input ('event_date', ticket.event_date)
+    .query ('UPDATE tickets SET event_name = @event_name, event_location = @event_location, price = @price, event_date = @event_date WHERE ticket_no = @id')
     return { message: 'Ticket updated successfully' }
 }
 

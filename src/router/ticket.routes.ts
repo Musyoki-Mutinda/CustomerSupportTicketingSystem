@@ -6,11 +6,11 @@ const ticketRoutes = (app: Express) => {
     app.get("/tickets", ticketController.getAllTickets);
     //get specific ticket by id
     app.get("/tickets/:id", ticketController.getTicketById);
-    //add customer
+    //add ticket
     app.post("/addticket", ticketController.createTicket);
-    //update customer
+    //update ticket
     app.put("/tickets/:id", ticketController.updateTicket);
-    //update customer
+    //delete ticket
     app.delete("/tickets/:id", ticketController.deleteTicket);
 }
 

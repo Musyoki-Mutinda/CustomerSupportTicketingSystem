@@ -13,13 +13,12 @@ export const createCustomer = async(customer: NewCustomer) => {
     const pool = await getPool();
     await pool
     .request()
-    .input ('customer_ID', customer.customer_ID)
     .input ('fIrst_name', customer.first_name)
     .input ('last_name', customer.last_name)
     .input ('email', customer.email)
     .input ('phone_no', customer.phone_no)
     .input('password', customer.password) //hashed
-    .query ('INSERT INTO customers (customer_ID, first_name, last_name, email, phone_no, password) VALUES (@customer_ID, @first_name, @last_name, @email, @phone_no, @password)');
+    .query ('INSERT INTO customers (first_name, last_name, email, phone_no, password) VALUES (@first_name, @last_name, @email, @phone_no, @password)');
     return { message: 'Customer created successfully' }
 }
 
@@ -59,7 +58,7 @@ export const getCustomerByEmail = async (email: string): Promise<Customer | null
     const pool = await getPool()
     const result = await pool
         .request()
-        .input(email, email)
+        .input('email', email)
         .query('SELECT * FROM customers WHERE email = @email');
     return result.recordset[0] || null;
 }

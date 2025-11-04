@@ -16,14 +16,11 @@ CREATE TABLE dbo.customers (
     last_name VARCHAR(15) NOT NULL,
     email VARCHAR(50) NOT NULL,
     phone_no VARCHAR(13) NOT NULL,
-    [password] VARCHAR(MAX) NOT NULL  -- Use brackets to avoid reserved word issues
+    [password] VARCHAR(MAX) NOT NULL  
 );
 GO
 
 
--- ========================================
--- INSERT SAMPLE DATA INTO customers
--- ========================================
 INSERT INTO dbo.customers (first_name, last_name, email, phone_no, [password])
 VALUES
 ('Alex','Mengo','mengoalex20@gmail.com','0712345678','password123'),

@@ -96,7 +96,7 @@ export const getCustomerById = async(req: Request, res: Response) => {
             } else if (error.message === 'Invalid credentials') {
                 res.status(401).json({error: error.message});
             } else {
-                res.status(500).json({ error: "Internal server error"});
+                res.status(500).json({ error: "Internal server error" });
             }
         }
     }

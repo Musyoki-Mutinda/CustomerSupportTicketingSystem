@@ -1,12 +1,25 @@
 
 import express from 'express';
 import { getPool } from './db/config';
+import customerRoutes from './router/customer.routes';
+import ticketRoutes from './router/ticket.routes';
+import dotenv from 'dotenv'
 
 const app = express()
+
+//middlesware -//parse json request body
+app.use(express.json());
+
+//config dotenv - load env variables
+dotenv.config()
 
 app.get('/', (req, res) =>{
     res.send("Hello, the express server is running")
 })
+
+// register routes
+customerRoutes(app)
+ticketRoutes(app)
 
 const port = 8081
 
@@ -15,7 +28,7 @@ app.listen(port, () =>{
 })
 
 //Fetch customers with minimal error handling
-app.get('/customers', (req,res) => {
+app.get('/customers', (req,res) => {   
     getPool().then(pool => {
         return pool.request().query('SELECT * FROM customers')
     }).then (result => {
