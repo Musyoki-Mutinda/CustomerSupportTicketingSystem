@@ -39,7 +39,7 @@ export const deleteCustomer = async(id:number) => {
     .input('id', id)
     .query('DELETE FROM customers WHERE customer_ID = @id')
     return { message: 'Customer deleted successfully' }
-}
+}                    
 
 //update a customer
 export const updateCustomer = async(id:number, customer: UpdateCustomer) => {

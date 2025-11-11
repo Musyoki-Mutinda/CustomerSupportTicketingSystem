@@ -3,6 +3,7 @@ import express from 'express';
 import { getPool } from './db/config';
 import customerRoutes from './router/customer.routes';
 import ticketRoutes from './router/ticket.routes';
+import commentsRoutes from './router/comments.routes'
 import dotenv from 'dotenv'
 
 const app = express()
@@ -20,6 +21,7 @@ app.get('/', (req, res) =>{
 // register routes
 customerRoutes(app)
 ticketRoutes(app)
+commentsRoutes(app)
 
 const port = 8081
 
