@@ -20,7 +20,7 @@ export const createTicket = async(ticket: NewTicket) => {
 }
 
 
-export const deleteTicket = async(id:number) => {
+export const deleteTicket = async(id:number) =>  {
     await ensureTicketExists(id);
     return await ticketRepositories.deleteTicket(id)
 }
