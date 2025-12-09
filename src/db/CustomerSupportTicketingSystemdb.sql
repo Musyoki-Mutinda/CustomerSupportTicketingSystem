@@ -35,25 +35,27 @@ SELECT * FROM dbo.customers;
 GO
 
 
-CREATE TABLE dbo.tickets (
+CREATE TABLE 
+dbo.tickets (
     ticket_no INT IDENTITY (1,1) PRIMARY KEY,
     event_name VARCHAR(50) NOT NULL,
     event_location VARCHAR(50) NOT NULL,
     price INT NOT NULL,
-    event_date DATETIME2(0) NOT NULL
+    event_date DATETIME2(0) NOT NULL,
+    customer_ID INT NOT NULL,
+    FOREIGN KEY (customer_ID) REFERENCES dbo.customers (customer_ID)
 );
 GO
 
-
-INSERT INTO dbo.tickets (event_name, event_location, price, event_date)
+INSERT INTO dbo.tickets (event_name, event_location, price, event_date,customer_ID)
 VALUES
-('Blankets & Wine','Kasarani',5000,'2025-10-23 10:00'),
-('Sol Fest','Langata',3000,'2025-12-18 17:00'),
-('Sunset GT','Ruaka',7000,'2025-08-23 09:00'),
-('October Fest','Nanyuki',4000,'2025-10-18 11:00'),
-('Safari Rally','Naivasha',6000,'2025-09-07 10:30'),
-('SAGE','Kiambu',8000,'2025-10-18 12:00'),
-('SiTH','Machakos',6500,'2025-12-06 12:00');
+('Blankets & Wine','Kasarani',5000,'2025-10-23 10:00',1),
+('Sol Fest','Langata',3000,'2025-12-18 17:00',3),
+('Sunset GT','Ruaka',7000,'2025-08-23 09:00',4),
+('October Fest','Nanyuki',4000,'2025-10-18 11:00',5),
+('Safari Rally','Naivasha',6000,'2025-09-07 10:30',7),
+('SAGE','Kiambu',8000,'2025-10-18 12:00',2),
+('SiTH','Machakos',6500,'2025-12-06 12:00',6);
 GO
 
 SELECT * FROM dbo.tickets;

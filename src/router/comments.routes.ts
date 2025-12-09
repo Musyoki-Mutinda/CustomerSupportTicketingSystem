@@ -6,7 +6,7 @@ const commentsRoutes = (app: Express) =>{
     //get all comments
     app.get("/comments", commentscontrollers.getAllcomments);
     //add comment
-    app.post("/comments", commentscontrollers.createComment);
+    app.post("/addcomment", commentscontrollers.createComment);
     //get comment by id
     app.get("/comments/:id", commentscontrollers.getCommentById);
     //delete a comment
